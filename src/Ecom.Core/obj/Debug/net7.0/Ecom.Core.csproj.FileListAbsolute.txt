@@ -1,0 +1,12 @@
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Core\bin\Debug\net7.0\Ecom.Core.deps.json
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Core\bin\Debug\net7.0\Ecom.Core.dll
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Core\bin\Debug\net7.0\Ecom.Core.pdb
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Core\obj\Debug\net7.0\Ecom.Core.csproj.AssemblyReference.cache
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Core\obj\Debug\net7.0\Ecom.Core.GeneratedMSBuildEditorConfig.editorconfig
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Core\obj\Debug\net7.0\Ecom.Core.AssemblyInfoInputs.cache
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Core\obj\Debug\net7.0\Ecom.Core.AssemblyInfo.cs
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Core\obj\Debug\net7.0\Ecom.Core.csproj.CoreCompileInputs.cache
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Core\obj\Debug\net7.0\Ecom.Core.dll
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Core\obj\Debug\net7.0\refint\Ecom.Core.dll
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Core\obj\Debug\net7.0\Ecom.Core.pdb
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Core\obj\Debug\net7.0\ref\Ecom.Core.dll

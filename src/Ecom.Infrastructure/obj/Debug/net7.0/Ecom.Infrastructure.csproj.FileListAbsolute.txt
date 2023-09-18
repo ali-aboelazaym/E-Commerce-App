@@ -1,0 +1,17 @@
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Infrastructure\bin\Debug\net7.0\Ecom.Infrastructure.deps.json
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Infrastructure\bin\Debug\net7.0\Ecom.Infrastructure.dll
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Infrastructure\bin\Debug\net7.0\Ecom.Infrastructure.pdb
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Infrastructure\obj\Debug\net7.0\Ecom.Infrastructure.csproj.AssemblyReference.cache
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Infrastructure\obj\Debug\net7.0\Ecom.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Infrastructure\obj\Debug\net7.0\Ecom.Infrastructure.AssemblyInfoInputs.cache
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Infrastructure\obj\Debug\net7.0\Ecom.Infrastructure.AssemblyInfo.cs
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Infrastructure\obj\Debug\net7.0\Ecom.Infrastructure.csproj.CoreCompileInputs.cache
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Infrastructure\obj\Debug\net7.0\Ecom.Infrastructure.dll
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Infrastructure\obj\Debug\net7.0\refint\Ecom.Infrastructure.dll
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Infrastructure\obj\Debug\net7.0\Ecom.Infrastructure.pdb
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Infrastructure\obj\Debug\net7.0\ref\Ecom.Infrastructure.dll
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Infrastructure\bin\Debug\net7.0\Ecom.Core.dll
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Infrastructure\bin\Debug\net7.0\Ecom.Core.pdb
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Infrastructure\obj\Debug\net7.0\Ecom.Infrastructure.csproj.CopyComplete
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Infrastructure\bin\Debug\net7.0\Ecom.Infrastructure.runtimeconfig.json
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.Infrastructure\obj\Debug\net7.0\Ecom.Infrastructure.genruntimeconfig.cache
