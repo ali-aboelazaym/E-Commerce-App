@@ -1,7 +1,9 @@
 ﻿using Ecom.Core.Entities;
+using Ecom.Core.Interfaces;
 using Ecom.Infrastructure.Data;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace Ecom.API.Controllers
 {
@@ -10,21 +12,26 @@ namespace Ecom.API.Controllers
     public class ProductController : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly IUnitOfWork _uow;
 
         public ProductController(ApplicationDbContext context)
         {
             _context = context;
         }
-        [HttpGet]
-        public IActionResult Getall()
+        public ProductController(IUnitOfWork uow)
         {
-            List<Product> prod =_context.Products.ToList();
+            _uow = uow;
+        }
+        [HttpGet]
+        public async Task<ActionResult> Getall()
+        {
+            var prod = await _uow.ProductRepository.GetAllAsync();
             return Ok(prod);
         }
         [HttpGet("id")]
-        public IActionResult GetById(int id)
+        public async Task<ActionResult> Get(int id)
         {
-            Product prod1 = _context.Products.FirstOrDefault(p => p.Id == id);
+            var prod1 =await _uow.ProductRepository.GetByIdAsync( id, x => x.Category);
             return Ok(prod1);
 
         }

@@ -13,12 +13,12 @@ namespace Ecom.Core.Interfaces
         IEnumerable<T> GetAll();
 
         Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includes);
-        Task<T> GetByIdAsync(T Id , params Expression<Func<T, object>>[] includes);
+        Task<T> GetByIdAsync(int Id , params Expression<Func<T, object>>[] includes);
 
-        Task<T> GetAsync(T Id);
+        Task<T> GetAsync(int Id);
         Task AddAsync(T entity);
-        Task updateAsync(T Id, T entity);
-        Task DeleteAsync(T Id);
+        Task updateAsync(int Id, T entity);
+        Task DeleteAsync(int Id);
 
     }
 }

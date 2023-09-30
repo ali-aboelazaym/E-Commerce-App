@@ -26,7 +26,7 @@ namespace Ecom.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(T Id)
+        public async Task DeleteAsync(int Id)
         {
             var entity =await _context.Set<T>().FindAsync(Id);
             _context.Set<T>().Remove(entity);   
@@ -50,13 +50,13 @@ namespace Ecom.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public async Task<T> GetAsync(T Id)
+        public async Task<T> GetAsync(int Id)
         {
            return await _context.Set<T>().FindAsync(Id);   
            
         }
 
-        public async Task<T> GetByIdAsync(T Id, params Expression<Func<T, object>>[] includes)
+        public async Task<T> GetByIdAsync(int Id, params Expression<Func<T, object>>[] includes)
         {
             IQueryable<T> query =_context.Set<T>();
             foreach (var item in includes)
@@ -66,7 +66,7 @@ namespace Ecom.Infrastructure.Repositories
             return await ((DbSet<T>)query).FindAsync(Id);   
         }
 
-        public async Task updateAsync(T Id, T entity)
+        public async Task updateAsync(int Id, T entity)
         {
             var existingEntity = _context.Set<T>().FindAsync(Id);
             if (existingEntity != null)

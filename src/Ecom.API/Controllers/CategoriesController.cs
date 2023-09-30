@@ -1,29 +1,39 @@
 ﻿using Ecom.Core.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
 
 namespace Ecom.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class Getallascyn : ControllerBase
+    public class CategoriesController : ControllerBase
     {
         private readonly IUnitOfWork _uow;
 
-        public Getallascyn(IUnitOfWork uow)
+        public CategoriesController(IUnitOfWork uow)
         {
             _uow = uow;
         }
 
-        public async Task <ActionResult> GetAllAsync()
+        [HttpGet]
+        public async Task<ActionResult> GetAllAsync()
         {
-            var allcategory= await _uow.CategoryRepository.GetAllAsync();
+            var allcategory = await _uow.CategoryRepository.GetAllAsync();
             if (allcategory is not null)
             {
                 return Ok(allcategory);
             }
             return BadRequest("Not Found");
+        }
+
+        [HttpGet("Id")]
+        public async Task<ActionResult> GetById (int id)
+        {
+            var cat = await _uow.CategoryRepository.GetAsync(id);
+            if (cat is not null) {
+            return Ok(cat);
+            }
+            return BadRequest();
         }
     }
 }
