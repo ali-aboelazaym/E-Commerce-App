@@ -1,4 +1,5 @@
-﻿using Ecom.Core.Interfaces;
+﻿using Ecom.Core.Entities;
+using Ecom.Core.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -33,7 +34,15 @@ namespace Ecom.API.Controllers
             if (cat is not null) {
             return Ok(cat);
             }
-            return BadRequest();
+            return BadRequest($"Not Found This Id {id}");
+        }
+
+        [HttpPost("add-new-category")]
+        public async Task<ActionResult> post(Category category)
+        {
+            await _uow.CategoryRepository.AddAsync(category);
+            
+            return Ok(category);
         }
     }
 }
