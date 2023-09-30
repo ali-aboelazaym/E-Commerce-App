@@ -33,7 +33,6 @@ namespace Ecom.API.Controllers
             if (cat is not null) {
             return Ok(cat);
             }
-
             return BadRequest();
         }
     }
