@@ -1,4 +1,5 @@
-﻿using Ecom.Core.Entities;
+﻿using Ecom.API.Dtos;
+using Ecom.Core.Entities;
 using Ecom.Core.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -38,11 +39,14 @@ namespace Ecom.API.Controllers
         }
 
         [HttpPost("add-new-category")]
-        public async Task<ActionResult> post(Category category)
+        public async Task<ActionResult> post(CategoryDto categorydto)
         {
-            await _uow.CategoryRepository.AddAsync(category);
+            var newcategory= new Category();
+            newcategory.Name = categorydto.Name;
+            newcategory.Description = categorydto.Description;
+            await _uow.CategoryRepository.AddAsync(newcategory);
             
-            return Ok(category);
+            return Ok(newcategory);
         }
     }
 }

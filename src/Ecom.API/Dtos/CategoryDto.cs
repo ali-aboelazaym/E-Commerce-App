@@ -1,8 +1,11 @@
-﻿namespace Ecom.API.Dtos
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Ecom.API.Dtos
 {
     public class CategoryDto
     {
-        public string name { get; set; }
-        public string description { get; set; }
+        [Required]
+        public string Name { get; set; }
+        public string Description { get; set; }
     }
 }
