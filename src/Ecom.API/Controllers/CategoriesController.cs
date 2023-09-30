@@ -41,12 +41,26 @@ namespace Ecom.API.Controllers
         [HttpPost("add-new-category")]
         public async Task<ActionResult> post(CategoryDto categorydto)
         {
-            var newcategory= new Category();
-            newcategory.Name = categorydto.Name;
-            newcategory.Description = categorydto.Description;
-            await _uow.CategoryRepository.AddAsync(newcategory);
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var newcategory = new Category();
+                    newcategory.Name = categorydto.Name;
+                    newcategory.Description = categorydto.Description;
+                    await _uow.CategoryRepository.AddAsync(newcategory);
+
+                    return Ok(categorydto);
+
+                }
+                return BadRequest(categorydto);
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
             
-            return Ok(newcategory);
         }
     }
 }
