@@ -78,3 +78,5 @@ D:\Ali Aboelazaym\projects\Ecom\src\Ecom.API\bin\Debug\net7.0\Ecom.Core.dll
 D:\Ali Aboelazaym\projects\Ecom\src\Ecom.API\bin\Debug\net7.0\Ecom.Infrastructure.dll
 D:\Ali Aboelazaym\projects\Ecom\src\Ecom.API\bin\Debug\net7.0\Ecom.Infrastructure.pdb
 D:\Ali Aboelazaym\projects\Ecom\src\Ecom.API\bin\Debug\net7.0\Ecom.Core.pdb
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.API\bin\Debug\net7.0\AutoMapper.dll
+D:\Ali Aboelazaym\projects\Ecom\src\Ecom.API\bin\Debug\net7.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

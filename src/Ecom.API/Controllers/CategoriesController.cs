@@ -1,8 +1,10 @@
-﻿using Ecom.API.Dtos;
+﻿using AutoMapper;
+using Ecom.API.Dtos;
 using Ecom.Core.Entities;
 using Ecom.Core.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 namespace Ecom.API.Controllers
 {
@@ -12,28 +14,43 @@ namespace Ecom.API.Controllers
     {
         private readonly IUnitOfWork _uow;
 
-        public CategoriesController(IUnitOfWork uow)
+        private readonly IMapper _mapper;
+
+        public CategoriesController(IUnitOfWork uow,IMapper mapper)
         {
             _uow = uow;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<ActionResult> GetAllAsync()
+        public async Task<ActionResult> Get()
         {
             var allcategory = await _uow.CategoryRepository.GetAllAsync();
+            
             if (allcategory is not null)
             {
-                return Ok(allcategory);
+                //using maping 
+
+                var res=_mapper.Map<IReadOnlyList<Category>,IReadOnlyList<listingCategoryDto>>(allcategory);
+                //using manual dictionary 
+
+                //var res = allcategory.Select(x => new listingCategoryDto
+                //{ 
+                //    id=x.Id ,
+                //    Name = x.Name,
+                //    Description = x.Description,
+                //}).ToList();
+                return Ok(res);
             }
             return BadRequest("Not Found");
         }
 
         [HttpGet("Id")]
-        public async Task<ActionResult> GetById (int id)
+        public async Task<ActionResult> Get(int id)
         {
             var cat = await _uow.CategoryRepository.GetAsync(id);
             if (cat is not null) {
-            return Ok(cat);
+            return Ok( _mapper.Map<Category, listingCategoryDto > (cat));
             }
             return BadRequest($"Not Found This Id {id}");
         }
@@ -61,6 +78,54 @@ namespace Ecom.API.Controllers
                 return BadRequest(ex.Message);
             }
             
+        }
+
+        [HttpPut("update-existing-cat")]
+        public async Task<ActionResult> put(updateCategoryDto categorydto)
+        {
+           
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var oldCategory = await _uow.CategoryRepository.GetAsync(categorydto.id);
+                    if (oldCategory is not null)
+                    {
+                        
+                        oldCategory.Name = categorydto.Name;
+                        oldCategory.Description = categorydto.Description;
+                        await _uow.CategoryRepository.updateAsync(categorydto.id,oldCategory);
+                        return Ok(categorydto);
+                    }
+                    
+                }
+                return BadRequest("this category not found");
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+        }
+
+        [HttpDelete("delete-existing-category")]
+        public async Task<ActionResult>delete(int id)
+        {
+            try
+            {
+                var oldcat = await _uow.CategoryRepository.GetAsync(id);
+                if (oldcat is not null)
+                {
+                    await _uow.ProductRepository.DeleteAsync(id);
+                    return Ok($"This Category {oldcat.Name} deleted successfuly");
+                }
+                return BadRequest("this category not found");
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
