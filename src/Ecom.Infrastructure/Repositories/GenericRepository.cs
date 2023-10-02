@@ -8,10 +8,11 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Ecom.Core.Entities;
 
 namespace Ecom.Infrastructure.Repositories
 {
-    public class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity<int>
     {
         private readonly ApplicationDbContext _context;
 
@@ -45,9 +46,15 @@ namespace Ecom.Infrastructure.Repositories
             return await _context.Set<T>().AsNoTracking().ToListAsync();
         }
 
-        public Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includes)
+        public async Task<IEnumerable<T>> GetAllAsync(params Expression<Func<T, object>>[] includes)
         {
-            throw new NotImplementedException();
+            var query = _context.Set<T>().AsQueryable();
+
+            foreach (var item in includes)
+            {
+                query=query.Include(item);
+            }
+            return query.ToList();
         }
 
         public async Task<T> GetAsync(int Id)
@@ -56,14 +63,14 @@ namespace Ecom.Infrastructure.Repositories
            
         }
 
-        public async Task<T> GetByIdAsync(int Id, params Expression<Func<T, object>>[] includes)
+        public async Task<T> GetByIdAsync(int id, params Expression<Func<T, object>>[] includes)
         {
-            IQueryable<T> query =_context.Set<T>();
+            IQueryable<T> query = _context.Set<T>().Where(x => x.Id == id);
             foreach (var item in includes)
             {
                 query = query.Include(item);
             }
-            return await ((DbSet<T>)query).FindAsync(Id);   
+            return await query.FirstOrDefaultAsync();  
         }
 
         public async Task updateAsync(int Id, T entity)
