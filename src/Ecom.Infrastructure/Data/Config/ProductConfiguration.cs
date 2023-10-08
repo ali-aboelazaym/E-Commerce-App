@@ -21,7 +21,7 @@ namespace Ecom.Infrastructure.Data.Config
             builder.HasData(
                 new Product { Id = 1, Name = "headphone", Description = "accessories", Price = 2000, CategoryId = 1, ProductPicture = "https//" },
                 new Product { Id = 2, Name = "motorola", Description = "old mobiles", Price = 4000, CategoryId = 3, ProductPicture = "https//" },
-                new Product { Id = 3, Name = "asd", Description = "accessories", Price = 7000, CategoryId = 4, ProductPicture = "https//" },
+                new Product { Id = 3, Name = "asd", Description = "accessories", Price = 7000, CategoryId = 4, ProductPicture = "https//" }
                 );
         }
     }

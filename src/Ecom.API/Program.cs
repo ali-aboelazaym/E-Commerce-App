@@ -1,4 +1,5 @@
 using Ecom.Infrastructure;
+using Microsoft.Extensions.FileProviders;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,6 +15,11 @@ builder.Services.InfrastructureConfiguration(builder.Configuration);
 //configure Atomapper 
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
+//configure ifileprovider
+
+builder.Services.AddSingleton<IFileProvider>(new PhysicalFileProvider(
+    Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -24,6 +30,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseStaticFiles();
 
 app.UseAuthorization();
 

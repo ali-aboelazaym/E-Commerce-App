@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
-using Ecom.API.Dtos;
+using Ecom.Core.Dtos;
 using Ecom.Core.Entities;
 using Ecom.Core.Interfaces;
+using Ecom.Infrastructure.Data;
 using Ecom.Infrastructure.Data.Config;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Reflection.Metadata.Ecma335;
 
 namespace Ecom.API.Controllers
 {
@@ -12,11 +14,13 @@ namespace Ecom.API.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
+        private readonly ApplicationDbContext _context;
         private readonly IUnitOfWork _uow;
         private readonly IMapper _Mapper;
 
-        public ProductsController(IUnitOfWork uow , IMapper mapper)
+        public ProductsController(ApplicationDbContext context, IUnitOfWork uow , IMapper mapper)
         {
+            _context = context;
             _uow = uow;
             _Mapper = mapper;
         }
@@ -46,11 +50,11 @@ namespace Ecom.API.Controllers
             {
                 if (ModelState.IsValid)
                 {
-                    var src = _Mapper.Map<Product>(productDto);
-                    await _uow.ProductRepository.AddAsync(src);
-                    return Ok(src);
+                    
+                    var res= await _uow.ProductRepository.AddAsync(productDto);
+                    return res? Ok(productDto) : BadRequest (res);
                 }
-                else { return BadRequest(productDto); }
+                return BadRequest(productDto);
             }
             catch (Exception ex)
             {

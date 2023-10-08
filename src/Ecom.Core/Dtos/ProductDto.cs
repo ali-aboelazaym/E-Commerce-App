@@ -1,7 +1,8 @@
 ﻿using Ecom.Core.Entities;
+using Microsoft.AspNetCore.Http;
 using System.ComponentModel.DataAnnotations;
 
-namespace Ecom.API.Dtos
+namespace Ecom.Core.Dtos
 {
     public class BaseProductDto
     {

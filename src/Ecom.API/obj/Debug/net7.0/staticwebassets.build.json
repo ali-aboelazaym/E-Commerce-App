@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "BaUwbwBl/y7TznsxvDX/UpdYxR5J0ULk7m1EWR1yFDM=",
+  "Hash": "Rj/WDPJBBF7RY+z4mNMQxSFjIdDMElgo9p8PgqtFXwE=",
   "Source": "Ecom.API",
   "BasePath": "_content/Ecom.API",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "Ecom.API\\wwwroot",
+      "Source": "Ecom.API",
+      "ContentRoot": "D:\\Ali Aboelazaym\\projects\\Ecom\\src\\Ecom.API\\wwwroot\\",
+      "BasePath": "_content/Ecom.API",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }
