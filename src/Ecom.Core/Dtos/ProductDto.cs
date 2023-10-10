@@ -18,6 +18,7 @@ namespace Ecom.Core.Dtos
         public int Id { get; set; }
         
         public string CategoryName { get; set; }
+        public string ProductPicture { get; set; }
 
     }
     public class CreateProductDto:BaseProductDto

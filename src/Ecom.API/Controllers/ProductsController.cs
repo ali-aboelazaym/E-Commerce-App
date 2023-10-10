@@ -30,7 +30,7 @@ namespace Ecom.API.Controllers
         [HttpGet("Get-All-Product")]
         public async Task <ActionResult> Get()
         {
-            var prod= await _uow.ProductRepository.GetAllAsync(x=>x.Category);
+            var prod= await _uow.ProductRepository.GetAllAsync();
             var result = _Mapper.Map<List<ProductDto>>(prod);
             return Ok(result);
         }
@@ -38,7 +38,7 @@ namespace Ecom.API.Controllers
         [HttpGet("id")]
         public async Task<ActionResult>Get(int id)
         {
-            var src = await _uow.ProductRepository.GetByIdAsync(id, x => x.Category);
+            var src = await _uow.ProductRepository.GetByIdAsync(id);
             var Results= _Mapper.Map<ProductDto>(src);
             return Ok(Results);
         }

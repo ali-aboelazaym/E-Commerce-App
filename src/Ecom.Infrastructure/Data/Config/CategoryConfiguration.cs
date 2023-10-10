@@ -9,12 +9,25 @@ using System.Threading.Tasks;
 
 namespace Ecom.Infrastructure.Data.Config
 {
+    ///انت عامل seeding no <summary>
+    /// انت عامل seeding no
+    ///الجهاز بطيئ جدا
+    ///هو فيه مشكلة في sql
+    ///لا خالص
+    ///ممكن نقفل جوجل كوروم علشان الرامات 
+    ///تماموف
+    /// </summary>
     internal class CategoryConfiguration : IEntityTypeConfiguration<Category>
     {
         public void Configure(EntityTypeBuilder<Category> builder)
         {
             builder.Property(x => x.Id).IsRequired();
             builder.Property(x => x.Name).HasMaxLength(30);
+            builder.HasData(
+               new Category { Id = 1,Description="test", Name = "one"},
+               new Category { Id = 2, Description = "test", Name = "two" }, 
+               new Category {Id = 3, Description = "test", Name = "three" }
+               );
         }
     }
 }
