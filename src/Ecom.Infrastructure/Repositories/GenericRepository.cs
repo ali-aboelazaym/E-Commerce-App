@@ -38,9 +38,7 @@ namespace Ecom.Infrastructure.Repositories
         {
           return _context.Set<T>().AsNoTracking().ToList();
         }
-
-        
-
+       
         public async Task<IReadOnlyList<T>> GetAllAsync()
         {
             return await _context.Set<T>().AsNoTracking().ToListAsync();

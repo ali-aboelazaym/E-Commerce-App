@@ -24,9 +24,7 @@ namespace Ecom.API.Controllers
             _uow = uow;
             _Mapper = mapper;
         }
-
-        
-
+       
         [HttpGet("Get-All-Product")]
         public async Task <ActionResult> Get()
         {
@@ -49,8 +47,7 @@ namespace Ecom.API.Controllers
             try
             {
                 if (ModelState.IsValid)
-                {
-                    
+                {                   
                     var res= await _uow.ProductRepository.AddAsync(productDto);
                     return res? Ok(productDto) : BadRequest (res);
                 }
@@ -58,10 +55,8 @@ namespace Ecom.API.Controllers
             }
             catch (Exception ex)
             {
-
                 return BadRequest(ex.Message);
-            }
-            
+            }            
         }
     }
 }
