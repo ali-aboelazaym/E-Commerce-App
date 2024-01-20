@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -14,8 +15,8 @@ namespace Ecom.Core.Entities
         public decimal Price { get; set; }
 
         public string ProductPicture { get; set; }
-        public string ProductPicture1 { get; set; }
-        
+       
+
         public int CategoryId { get; set; }
         public virtual Category Category { get; set; }
     }

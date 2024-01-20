@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "Rj/WDPJBBF7RY+z4mNMQxSFjIdDMElgo9p8PgqtFXwE=",
+  "Hash": "FrcYZn7woLN0c1Wr5HY/B3NSr9IVJh2AqKFv4WT3UKQ=",
   "Source": "Ecom.API",
   "BasePath": "_content/Ecom.API",
   "Mode": "Default",
@@ -15,5 +15,40 @@
       "Pattern": "**"
     }
   ],
-  "Assets": []
+  "Assets": [
+    {
+      "Identity": "D:\\Ali Aboelazaym\\projects\\Ecom\\src\\Ecom.API\\wwwroot\\images\\products\\11b005f6-20c4-4df3-8add-3e2d4812339atest.png",
+      "SourceId": "Ecom.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Ali Aboelazaym\\projects\\Ecom\\src\\Ecom.API\\wwwroot\\",
+      "BasePath": "_content/Ecom.API",
+      "RelativePath": "images/products/11b005f6-20c4-4df3-8add-3e2d4812339atest.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\products\\11b005f6-20c4-4df3-8add-3e2d4812339atest.png"
+    },
+    {
+      "Identity": "D:\\Ali Aboelazaym\\projects\\Ecom\\src\\Ecom.API\\wwwroot\\images\\products\\eda9b2e2-aaa9-4df1-b870-61da40a958afCapture.JPG",
+      "SourceId": "Ecom.API",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Ali Aboelazaym\\projects\\Ecom\\src\\Ecom.API\\wwwroot\\",
+      "BasePath": "_content/Ecom.API",
+      "RelativePath": "images/products/eda9b2e2-aaa9-4df1-b870-61da40a958afCapture.JPG",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\products\\eda9b2e2-aaa9-4df1-b870-61da40a958afCapture.JPG"
+    }
+  ]
 }

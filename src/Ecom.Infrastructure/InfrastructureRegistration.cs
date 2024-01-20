@@ -21,6 +21,9 @@ namespace Ecom.Infrastructure
             //sevices.AddScoped<ICategoryRepository, CategoryRepository>();
             //sevices.AddScoped<IProductRepository, ProductRepository>();
             sevices.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            //Configurer DB
+
             sevices.AddDbContext<ApplicationDbContext>(opt => 
             {
                 opt.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));

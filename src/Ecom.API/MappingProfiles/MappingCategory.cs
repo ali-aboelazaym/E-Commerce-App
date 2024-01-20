@@ -9,7 +9,8 @@ namespace Ecom.API.MappingProfiles
         public MappingCategory()
         {
              CreateMap<CategoryDto,Category> ().ReverseMap();
-            CreateMap<listingCategoryDto,Category> ().ReverseMap();    
+            CreateMap<ListingCategoryDto, Category> ().ReverseMap();
+            //CreateMap<UpdateCategoryDto, Category>().ReverseMap();
         }
     }
 }

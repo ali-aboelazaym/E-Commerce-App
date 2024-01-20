@@ -1,0 +1,29 @@
+{
+  "Files": [
+    {
+      "Id": "D:\\Ali Aboelazaym\\projects\\Ecom\\src\\Ecom.API\\wwwroot\\images\\products\\11b005f6-20c4-4df3-8add-3e2d4812339atest.png",
+      "PackagePath": "staticwebassets\\images\\products\\11b005f6-20c4-4df3-8add-3e2d4812339atest.png"
+    },
+    {
+      "Id": "D:\\Ali Aboelazaym\\projects\\Ecom\\src\\Ecom.API\\wwwroot\\images\\products\\eda9b2e2-aaa9-4df1-b870-61da40a958afCapture.JPG",
+      "PackagePath": "staticwebassets\\images\\products\\eda9b2e2-aaa9-4df1-b870-61da40a958afCapture.JPG"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.Ecom.API.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.build.Ecom.API.props",
+      "PackagePath": "build\\Ecom.API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildMultiTargeting.Ecom.API.props",
+      "PackagePath": "buildMultiTargeting\\Ecom.API.props"
+    },
+    {
+      "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.buildTransitive.Ecom.API.props",
+      "PackagePath": "buildTransitive\\Ecom.API.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

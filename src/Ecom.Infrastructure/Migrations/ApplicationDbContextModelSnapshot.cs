@@ -192,9 +192,6 @@ namespace Ecom.Infrastructure.Migrations
                     b.Property<string>("ProductPicture")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ProductPicture1")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");

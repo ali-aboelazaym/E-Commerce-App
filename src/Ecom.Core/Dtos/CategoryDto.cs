@@ -2,20 +2,19 @@
 
 namespace Ecom.Core.Dtos
 {
+
     public class CategoryDto
     {
         [Required]
         public string Name { get; set; }
         public string Description { get; set; }
     }
-
-    public class updateCategoryDto:CategoryDto
+    public class ListingCategoryDto : CategoryDto
     {
-        public int id { get; set; }
+        public int Id { get; set; }
     }
-
-    public class listingCategoryDto : CategoryDto
+    public class UpdateCategoryDto : CategoryDto
     {
-        public int id { get; set; }
+        public int Id { get; set; }
     }
 }

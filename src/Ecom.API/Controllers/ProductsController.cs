@@ -6,6 +6,7 @@ using Ecom.Infrastructure.Data;
 using Ecom.Infrastructure.Data.Config;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.FileProviders;
 using System.Reflection.Metadata.Ecma335;
 
 namespace Ecom.API.Controllers
@@ -14,15 +15,17 @@ namespace Ecom.API.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        private readonly ApplicationDbContext _context;
+        //private readonly ApplicationDbContext _context;
         private readonly IUnitOfWork _uow;
         private readonly IMapper _Mapper;
-
-        public ProductsController(ApplicationDbContext context, IUnitOfWork uow , IMapper mapper)
+        private readonly IWebHostEnvironment _webHost;
+        //ApplicationDbContext context, 
+        public ProductsController(IUnitOfWork uow , IMapper mapper, IWebHostEnvironment webHost)
         {
-            _context = context;
+            //_context = context;
             _uow = uow;
             _Mapper = mapper;
+            _webHost = webHost;
         }
        
         [HttpGet("Get-All-Product")]
@@ -41,22 +44,62 @@ namespace Ecom.API.Controllers
             return Ok(Results);
         }
 
-        [HttpPost]
-        public async Task<ActionResult>post(CreateProductDto productDto)
+        [HttpPost("add-new-product")]
+        public async Task<ActionResult> Post([FromForm] CreateProductDto productDto)
         {
             try
             {
                 if (ModelState.IsValid)
-                {                   
-                    var res= await _uow.ProductRepository.AddAsync(productDto);
-                    return res? Ok(productDto) : BadRequest (res);
+                {
+
+                    var res = await _uow.ProductRepository.AddAsync(productDto);
+                    return res ? Ok(productDto) : BadRequest(res);
                 }
                 return BadRequest(productDto);
             }
             catch (Exception ex)
             {
+
                 return BadRequest(ex.Message);
-            }            
+            }
+
+        }
+        [HttpPut("update-exiting-product/{id}")]
+        public async Task<ActionResult> Put(int id, [FromForm] UpdateProductDto productDto)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var res = await _uow.ProductRepository.UpdateAsync(id, productDto);
+                    return res ? Ok(productDto) : BadRequest(res);
+                }
+                return BadRequest(productDto);
+
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
+        }
+        [HttpDelete("delete-exiting-product/{id}")]
+        public async Task<ActionResult> Delete(int id)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var res = await _uow.ProductRepository.DeleteAsyncWithPicture(id);
+                    return res ? Ok(res) : BadRequest(res);
+                }
+                return NotFound($" This is {id} Not Found");
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
         }
     }
 }
