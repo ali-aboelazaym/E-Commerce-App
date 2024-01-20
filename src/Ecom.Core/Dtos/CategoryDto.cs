@@ -2,7 +2,6 @@
 
 namespace Ecom.Core.Dtos
 {
-
     public class CategoryDto
     {
         [Required]

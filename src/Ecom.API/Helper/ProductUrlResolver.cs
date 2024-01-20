@@ -7,7 +7,6 @@ namespace Ecom.API.Helper
     public class ProductUrlResolver : IValueResolver<Product, ProductDto, string>
     {
         private readonly IConfiguration _config;
-
         public ProductUrlResolver(IConfiguration config)
         {
             _config = config;

@@ -8,15 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Ecom.Infrastructure.Data.Config
-{
-    ///انت عامل seeding no <summary>
-    /// انت عامل seeding no
-    ///الجهاز بطيئ جدا
-    ///هو فيه مشكلة في sql
-    ///لا خالص
-    ///ممكن نقفل جوجل كوروم علشان الرامات 
-    ///تماموف
-    /// </summary>
+{    
     internal class CategoryConfiguration : IEntityTypeConfiguration<Category>
     {
         public void Configure(EntityTypeBuilder<Category> builder)

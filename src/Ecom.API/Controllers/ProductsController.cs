@@ -15,14 +15,12 @@ namespace Ecom.API.Controllers
     [ApiController]
     public class ProductsController : ControllerBase
     {
-        //private readonly ApplicationDbContext _context;
         private readonly IUnitOfWork _uow;
         private readonly IMapper _Mapper;
         private readonly IWebHostEnvironment _webHost;
-        //ApplicationDbContext context, 
+
         public ProductsController(IUnitOfWork uow , IMapper mapper, IWebHostEnvironment webHost)
         {
-            //_context = context;
             _uow = uow;
             _Mapper = mapper;
             _webHost = webHost;
@@ -36,7 +34,7 @@ namespace Ecom.API.Controllers
             return Ok(result);
         }
 
-        [HttpGet("id")]
+        [HttpGet("Get-One-Product-ById")]
         public async Task<ActionResult>Get(int id)
         {
             var src = await _uow.ProductRepository.GetByIdAsync(id);
@@ -51,7 +49,6 @@ namespace Ecom.API.Controllers
             {
                 if (ModelState.IsValid)
                 {
-
                     var res = await _uow.ProductRepository.AddAsync(productDto);
                     return res ? Ok(productDto) : BadRequest(res);
                 }
@@ -59,11 +56,10 @@ namespace Ecom.API.Controllers
             }
             catch (Exception ex)
             {
-
                 return BadRequest(ex.Message);
             }
-
         }
+
         [HttpPut("update-exiting-product/{id}")]
         public async Task<ActionResult> Put(int id, [FromForm] UpdateProductDto productDto)
         {
@@ -75,14 +71,13 @@ namespace Ecom.API.Controllers
                     return res ? Ok(productDto) : BadRequest(res);
                 }
                 return BadRequest(productDto);
-
             }
             catch (Exception ex)
             {
-
                 return BadRequest(ex.Message);
             }
         }
+
         [HttpDelete("delete-exiting-product/{id}")]
         public async Task<ActionResult> Delete(int id)
         {
@@ -97,7 +92,6 @@ namespace Ecom.API.Controllers
             }
             catch (Exception ex)
             {
-
                 return BadRequest(ex.Message);
             }
         }

@@ -21,28 +21,20 @@ namespace Ecom.API.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
+        [HttpGet("Get-all-category")]
         public async Task<ActionResult> Get()
         {
             var allcategory = await _uow.CategoryRepository.GetAllAsync();           
             if (allcategory is not null)
             {
                 //using maping 
-                var res=_mapper.Map<IReadOnlyList<Category>,IReadOnlyList<ListingCategoryDto>>(allcategory);
-                //using manual dictionary 
-
-                //var res = allcategory.Select(x => new listingCategoryDto
-                //{ 
-                //    id=x.Id ,
-                //    Name = x.Name,
-                //    Description = x.Description,
-                //}).ToList();
+                var res=_mapper.Map<IReadOnlyList<Category>,IReadOnlyList<ListingCategoryDto>>(allcategory);              
                 return Ok(res);
             }
             return BadRequest("Not Found");
         }
 
-        [HttpGet("Id")]
+        [HttpGet("Get-One-Category-ById")]
         public async Task<ActionResult> Get(int id)
         {
             var cat = await _uow.CategoryRepository.GetAsync(id);
@@ -73,47 +65,47 @@ namespace Ecom.API.Controllers
             }            
         }
 
-        //[HttpPut("update-existing-cat")]
-        //public async Task<ActionResult> put(updateCategoryDto categorydto)
-        //{          
-        //    try
-        //    {
-        //        if (ModelState.IsValid)
-        //        {
-        //            var oldCategory = await _uow.CategoryRepository.GetAsync(categorydto.id);
-        //            if (oldCategory is not null)
-        //            {                        
-        //                oldCategory.Name = categorydto.Name;
-        //                oldCategory.Description = categorydto.Description;
-        //                await _uow.CategoryRepository.updateAsync(categorydto.id,oldCategory);
-        //                return Ok(categorydto);
-        //            }                   
-        //        }
-        //        return BadRequest("this category not found");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest(ex.Message);
-        //    }
-        //}
+        [HttpPut("update-existing-cat")]
+        public async Task<ActionResult> put(UpdateCategoryDto categorydto)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var oldCategory = await _uow.CategoryRepository.GetAsync(categorydto.Id);
+                    if (oldCategory is not null)
+                    {
+                        oldCategory.Name = categorydto.Name;
+                        oldCategory.Description = categorydto.Description;
+                        await _uow.CategoryRepository.updateAsync(categorydto.Id, oldCategory);
+                        return Ok(categorydto);
+                    }
+                }
+                return BadRequest("this category not found");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
 
-        //[HttpDelete("delete-existing-category")]
-        //public async Task<ActionResult>delete(int id)
-        //{
-        //    try
-        //    {
-        //        var oldcat = await _uow.CategoryRepository.GetAsync(id);
-        //        if (oldcat is not null)
-        //        {
-        //            await _uow.ProductRepository.DeleteAsync(id);
-        //            return Ok($"This Category {oldcat.Name} deleted successfuly");
-        //        }
-        //        return BadRequest("this category not found");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return BadRequest(ex.Message);
-        //    }
-        //}
+        [HttpDelete("delete-existing-category")]
+        public async Task<ActionResult> delete(int id)
+        {
+            try
+            {
+                var oldcat = await _uow.CategoryRepository.GetAsync(id);
+                if (oldcat is not null)
+                {
+                    await _uow.ProductRepository.DeleteAsync(id);
+                    return Ok($"This Category {oldcat.Name} deleted successfuly");
+                }
+                return BadRequest("this category not found");
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+        }
     }
 }
